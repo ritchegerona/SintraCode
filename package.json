@@ -9,8 +9,13 @@
     "test": "jest",
     "prepublishOnly": "npm run lint && npm test"
   },
+  "jest": {
+    "testPathIgnorePatterns": ["/sintracode/"],
+    "testEnvironment": "node"
+  },
   "devDependencies": {
     "eslint": "^8.57.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0"
   }
 }
