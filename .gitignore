@@ -1,0 +1,21 @@
+# Node dependencies
+node_modules/
+
+# Pi private data and config
+.pi/
+.sintracode/
+
+# Environment files (secrets)
+.env
+*.secret
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor / IDE folders
+.idea/
+.vscode/
+
+# Build artifacts (if any)
+.dist/

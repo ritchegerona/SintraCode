@@ -1,0 +1,16 @@
+{
+  "name": "sintracode",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "./run-sintracode",
+    "print": "./run-sintracode -p",
+    "lint": "eslint . --ext .js,.ts",
+    "test": "jest",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0"
+  }
+}
