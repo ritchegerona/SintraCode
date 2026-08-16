@@ -139,6 +139,9 @@ If you added an alias to your shell, delete the line from your rc file and reloa
 
 ### Interactive mode (default)
 
+You can invoke the command from **any directory** within the repository (or after a global install). The wrapper automatically locates the repository root and launches Pi.
+
+
 ```bash
 ./run-sintracode
 ```
