@@ -2,6 +2,9 @@
   "name": "sintracode",
   "version": "1.0.0",
   "private": true,
+  "bin": {
+    "sintracode": "./run-sintracode"
+  },
   "scripts": {
     "start": "./run-sintracode",
     "print": "./run-sintracode -p",
