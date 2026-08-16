@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# Run only the project’s own tests (skip linting of bundled Pi source)
+npm test

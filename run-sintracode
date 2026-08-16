@@ -1,9 +1,50 @@
 #!/usr/bin/env bash
 # Wrapper to launch the Pi agent (renamed to sintracode) from the project root.
-# It prints a custom banner before starting the Pi UI.
+# Features:
+#   • Configurable banner (banner.json)
+#   • Optional --no-banner flag
+#   • Optional --alias <name> flag (currently only for future use)
+#   • Optional --context-dir <path> to enable Pi context files
+#   • Automatic dependency install on first run
 
-# ----- Simple Banner -----
-echo "Welcome to Sintra"
+# ----- Parse wrapper flags -----
+ALIAS=""
+NO_BANNER=0
+CONTEXT_DIR=""
+# We'll collect the remaining args to forward to Pi after handling wrapper‑specific flags.
+FORWARD_ARGS=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --alias)
+      ALIAS="$2"
+      shift 2
+      ;;
+    --no-banner)
+      NO_BANNER=1
+      shift
+      ;;
+    --context-dir)
+      CONTEXT_DIR="$2"
+      shift 2
+      ;;
+    *)
+      FORWARD_ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+# ----- Banner -----
+if [ $NO_BANNER -eq 0 ]; then
+  # Load banner from JSON if present, else fallback.
+  BANNER_FILE="$(dirname "${BASH_SOURCE[0]}")/banner.json"
+  if [ -f "$BANNER_FILE" ]; then
+    BANNER_TEXT=$(cat "$BANNER_FILE" | sed -n 's/.*"text"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+    echo "$BANNER_TEXT"
+  else
+    echo "Welcome to Sintra"
+  fi
+fi
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PI_DIR="$SCRIPT_DIR/sintracode"
@@ -14,5 +55,15 @@ if [ ! -d "$PI_DIR/node_modules" ]; then
   (cd "$PI_DIR" && npm install)
 fi
 
-# Execute the Pi CLI entry point.
-node "$PI_DIR/dist/cli.js" --no-context-files "$@"
+# Build the final argument list for Pi.
+PI_ARGS=("$PI_DIR/dist/cli.js")
+if [ -n "$CONTEXT_DIR" ]; then
+  PI_ARGS+=("--context-dir" "$CONTEXT_DIR")
+else
+  PI_ARGS+=("--no-context-files")
+fi
+# Append any forwarded args from the user.
+PI_ARGS+=("${FORWARD_ARGS[@]}")
+
+# Execute the Pi CLI.
+node "${PI_ARGS[@]}"

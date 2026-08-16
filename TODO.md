@@ -1,16 +1,16 @@
 # TODO – Sintra Project Enhancements
 
 ## 🎯 Short‑Term (quick wins)
-- [ ] **S1 – Add a proper `.gitignore`** (exclude `node_modules/`, `.env`, `.pi/`, `.sintracode/`, OS junk, etc.)
-- [ ] **S2 – Document required environment variables** (OpenAI, NVIDIA keys) in README under a new *🔑 API Keys* section.
-- [ ] **S3 – Provide an `.env.example`** file with placeholder keys.
-- [ ] **S4 – Add npm scripts** (`start`, `print`, `lint`, `test`, `prepublish`) to `package.json`.
-- [ ] **S5 – Add a minimal test suite** (Jest/Mocha) that checks the wrapper exits with code 0 and prints the banner.
-- [ ] **S6 – Add a `pre‑commit` hook** (via `husky` or `lefthook`) to run lint and tests before committing.
-- [ ] **S7 – Add a GitHub Actions CI workflow** (`.github/workflows/ci.yml`) that runs lint, tests, and a secret‑leak check.
-- [ ] **S8 – Add a short “Getting Started” demo GIF/video** linked from the README.
-- [ ] **S9 – Make the banner configurable** (read from `banner.json`); add fallback default.
-- [ ] **S10 – Add a `CHANGELOG.md`** following Keep a Changelog format.
+- [x] **S1 – Add a proper `.gitignore`** (exclude `node_modules/`, `.env`, `.pi/`, `.sintracode/`, OS junk, etc.)
+- [x] **S2 – Document required environment variables** (OpenAI, NVIDIA keys) in README under a new *🔑 API Keys* section.
+- [x] **S3 – Provide an `.env.example`** file with placeholder keys.
+- [x] **S4 – Add npm scripts** (`start`, `print`, `lint`, `test`, `prepublish`) to `package.json`.
+- [x] **S5 – Add a minimal test suite** (Jest/Mocha) that checks the wrapper exits with code 0 and prints the banner.
+- [x] **S6 – Add a `pre‑commit` hook** (via `husky` or `lefthook`) to run lint and tests before committing.
+- [x] **S7 – Add a GitHub Actions CI workflow** (`.github/workflows/ci.yml`) that runs lint, tests, and a secret‑leak check.
+- [x] **S8 – Add a short “Getting Started” demo GIF/video** linked from the README.
+- [x] **S9 – Make the banner configurable** (read from `banner.json`); add fallback default.
+- [x] **S10 – Add a `CHANGELOG.md`** following Keep a Changelog format.
 
 ## 🛠️ Medium‑Term (robustness & ergonomics)
 - [ ] **M1 – Typed config validation** (using `zod` or `ajv`) for `.pi/settings.json`.

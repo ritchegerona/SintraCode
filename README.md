@@ -1,5 +1,7 @@
 # Sintra
 
+*(default branch: `main`)*
+
 ![Sintra logo](sintracode-logo.png)
 
 **Sintra** is a lightweight wrapper around the **Pi coding agent** (`@earendil-works/pi-coding-agent`). It provides a ready‑to‑use AI coding assistant with the familiar Pi terminal UI, but ships as a self‑contained project that can be dropped into any repository.
@@ -57,7 +59,17 @@ All of the powerful Pi features—model selection, tools (read, bash, edit, writ
 - **Node.js** (v18 or later) – required to run Pi’s JavaScript code.
 - **npm** (or `pnpm`/`yarn` – any that can install a `package.json`).
 - **Python 3.11+** – only needed if you want to use Pi’s *Python* tools (`read`, `write`, etc.). The wrapper itself is pure Bash.
-- **API keys** for the models you intend to use (OpenAI, Anthropic, NVIDIA NIM, etc.). See Pi’s docs for details.
+- **🔑 API keys** – Provide keys for the providers you plan to use (OpenAI, Anthropic, NVIDIA NIM, etc.).
+  
+  1. Copy the template file:
+     ```bash
+     cp .env.example .env
+     ```
+  2. Fill in your real keys in `.env` (e.g., `OPENAI_API_KEY=sk‑…`).
+  3. **Never commit** `.env`; it is already listed in `.gitignore`.
+  
+  Pi reads these variables automatically.  See Pi’s documentation for additional provider‑specific variables.
+
 
 ---
 
@@ -87,6 +99,14 @@ All of the powerful Pi features—model selection, tools (read, bash, edit, writ
    source ~/.zshrc   # or the appropriate rc file
    ```
    Now you can start the agent with just `sintracode`.
+
+### Demo
+
+A quick GIF/video demo of Sintra in action can be viewed here (replace the placeholder with your own media):
+
+[![Sintra Demo](https://raw.githubusercontent.com/ritchegerona/SintraCode/main/demo.gif)](https://github.com/ritchegerona/SintraCode/blob/main/demo.gif)
+
+*If you don’t have a GIF yet, you can record a short screen capture (e.g., using `asciinema` or any screen‑recording tool) and commit it as `demo.gif`.*
 
 ---
 
