@@ -93,12 +93,18 @@ All of the powerful Pi features—model selection, tools (read, bash, edit, writ
    chmod +x run-sintracode
    ```
 
-4. **Optional – Add a convenient alias** to your shell (`~/.zshrc`, `~/.bashrc`, …):
+4. **Optional – Add a convenient alias** to your shell (`~/.zshrc`, `~/.bashrc`, …) or **install globally**:
    ```bash
    alias sintracode="$(pwd)/run-sintracode"
    source ~/.zshrc   # or the appropriate rc file
    ```
    Now you can start the agent with just `sintracode`.
+
+   **Or**, after navigating to the project root, run:
+   ```bash
+   npm install -g .
+   ```
+   This registers a global `sintracode` command that can be invoked from any directory.
 
 ### Demo
 
