@@ -46,8 +46,21 @@ if [ $NO_BANNER -eq 0 ]; then
   fi
 fi
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-PI_DIR="$SCRIPT_DIR/sintracode"
+# Determine the project root (if inside a Git repo) and locate the Pi source.
+# First, try to resolve the Git top‑level directory; if that fails, fall back to the wrapper's location.
+if git rev-parse --show-toplevel > /dev/null 2>&1; then
+  PROJECT_ROOT=$(git rev-parse --show-toplevel)
+  if [ -d "$PROJECT_ROOT/sintracode" ]; then
+    PI_DIR="$PROJECT_ROOT/sintracode"
+  else
+    # Fallback to wrapper location
+    SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+    PI_DIR="$SCRIPT_DIR/sintracode"
+  fi
+else
+  SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+  PI_DIR="$SCRIPT_DIR/sintracode"
+fi
 
 # Ensure dependencies are installed (they were installed earlier).
 if [ ! -d "$PI_DIR/node_modules" ]; then
