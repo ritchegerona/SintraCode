@@ -77,7 +77,7 @@ All of the powerful Pi features—model selection, tools (read, bash, edit, writ
 
 1. **Clone the repository** (or copy the folder into an existing project):
    ```bash
-   git clone https://github.com/your‑org/sintracode.git
+   git clone https://github.com/ritchegerona/SintraCode.git
    cd sintracode
    ```
 
